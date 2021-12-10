@@ -1,0 +1,134 @@
+#+TITLE: A non-local algorith, for iimage denoising notes
+#+AUTHOR: Alexander De Laurentiis
+#+STARTUP: latex-preview overview
+
+- process patch of image is possible since may take while elsewise
+
+* Method Noise
+*Method Noise:* let u be an image and D_h a denoising operator depending on a filtering parameter h. Then, we define the method noise as the image difference u-D_hu
+
+- should not alter the noisy image
+- method noise should be very small when some kind of regularity for the image is assumed.
+- if denoising performs well
+  - method noise will contain little structure and look even with non noisy image
+    
+** Gaussian filtering
+*Theorem 1 (Gabor 1960):* The image method noise of the convolution with a gaussian kernel $G_h is u-G_h * u = -h^2\triangle u + o(h^2)$ for h small enough
+
+- gaussian method noise
+  - zero in harmonic parts of the image
+  - large near edges or texture
+- Laplacian
+  - never small
+
+therefore Gaussian convolution is optimal in flat parts
+
+** The anisotropic filtering
+- Attempts to avoid blurring of gaussian by convolving the image u at x in the orthogonal direction Du(x).
+
+- Will restore straign lines well while degrading flat or textured regions
+
+** The Total Variation minimization
+- straight edges are well maintained but details and texture can be smoothed for smaller lambda values
+
+** The Neighborhood filtering
+- any filter that restores a pixel by taking the average of the neighborhood
+*Algos*
+- Yaroslavsky Filter
+- SUSAN filter (1995)
+- Bilateral filter (1998)
+
+in SUSAN and Bilateral algo instead of considering a fixed spatial neighborhood weighs the distance to the reference pixel.
+
+- the algorithm will not blur edges
+- will compare main algo to Yarolslavsky
+*issue*
+- comparing only graylevel values is not as robust with more noise
+
+* Non-Local-means Algorithm
+
+given noisy image, $v = \{v(i) | i \in I \}$
+estimated value NL[v](i) for a  pixel i is computed as the weighted average of all pixels in the image as follows,
+
+$NL[v](i)=\sum_{j\in I}w(i,j)v(j)$
+
+{w(i,j)}_j (family of weights)
+- depends on milarity between pixels i and j
+$0 \leq w(i,j) \leq 1$,
+
+*and*
+
+$\sum_j w(i,j) = 1$
+
+$N_k$ denotes a square neightborhood of fixed size centered at pixel k.
+intensity of area is then $v(N_k)$
+
+The similarity of two pixel neighborhoods is weighted by the Euclidean distance between them.
+
+w$E\| v(N_i) - v(J_j) \|_2^2,_a$ where a > 0
+
+with this we find this.
+
+$E\| v(N_i) - v(J_j) \|_2^2,_a = \| u(N_i) - u(J_j) \|_2^2,_a + 2\sigma^2$
+
+weights defined as
+
+$w(i,j) = \frac{1}{Z(i)}e^{-\frac{\| v(N_i) - v(J_j) \|_2^2,_a}{h^2}$
+
+where Z(i) is the normalizing *constant*
+
+$Z(i) = \sum_j e^{-\frac{\| v(N_i) - v(J_j) \|_2^2,_a}{h^2}$
+
+
+- h is a degree of filtering.
+  - controls the exponention function
+
+** Simplifyng steps for my own sake
+  - v(i) is the value of pixel i in the original
+  - v(i) = u(i) + n(i)
+    - u(i) is correct value of i
+    - n(i) is the noise interfering with pixel i
+  - w(i,j) is the
+  - I is the total range of pixels
+  - N_k is the neighborhood of pixels centered at pixel k
+*** step 1.1
+- find NL[i](i)
+  - the weighted average of all pixels in the image
+  - $NL[v](i)=\sum_{j\in I}w(i,j)v(j)$
+*** step 1.2
+for w(i,j)
+- make an set(array) of the family of weights for the pixel
+- $0 \leq w(i,j) \leq 1$
+- calculated with
+  $\| v(N_i) - v(N_j) \|_2^2,_a$ where a > 0
+  - the weighted euclidian distance
+  - measures similarity of two pixels
+  - a is the standard deviation of the gaussian kernel
+calculating   $\| v(N_i) - v(N_j) \|_2^2,_a$ in *enlish?*
+the 2 norm squared of the difference of two neighborhoods of pixel grey values flattened and centered at i and j respectively
+- the 2 norm is defined as $(\sum_{i=0}^kx_i^2)^{1/2}$ for a vector x
+
+
+*** Find Z(i)
+- normalizing constant for weights
+
+$Z(i) = \sum_j e^{-\frac{\| v(N_i) - v(J_j) \|_2^2,_a}{h^2}$
+
+- *h* is a parameter that acts as a degree of filtering
+*** finding w(i,j)
+
+$w(i,j) = \frac{1}{Z(i)}e^{-\frac{\| v(N_i) - v(J_j) \|_2^2,_a}{h^2}$
+
+* NL-means consistency
+- for a pixel i, the NL-alg converges to its approximation
+
+- The NL-means is an estimator of comditional expectation
+
+- NL-means algorith correctls the noisy image rather than attempt to separate the noise from the true image (smooth it)
+* Discussion and Experimentation
+*For tests*
+- for computations sake search of each have a search window of 21 pixels
+- neighborhood of 7x7
+- h has been fixed to 10*\sigma
+
+
