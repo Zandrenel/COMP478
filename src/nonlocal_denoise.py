@@ -3,8 +3,9 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import math
 import time
+import sys
 
-def nonlocal_denoise(image, h=2,m=7,search_space=21,file_name="nonlocal.png"):
+def nonlocal_denoise(image, h=10,m=7,deviation=29,search_space=21,file_name="nonlocal.png"):
     startTime = time.time()
     
     # h is a weightparamter
@@ -56,12 +57,21 @@ def nonlocal_denoise(image, h=2,m=7,search_space=21,file_name="nonlocal.png"):
 
     fImg = image.flatten()
     l = len(fImg)
-    indexlist = np.array([ i for i in range(l) ])
+    indexlist = [ i for i in range(l) ]
     #simple iteration calculatr for reducing operations done in the loop
     i0 = 0
+
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
-            print("{}/{}".format(i0,l))
+
+            ctime = round(time.time()-startTime,2)
+            if ctime/60 > 1:
+                
+            sys.stdout.write("{}/{}, {}% {}s\n".format(i0,l,round(100*i0/l),ctime))
+            sys.stdout.flush()
+            print()
+            
+
 
             # finds all pixel indexes of the search window
             swindow = []
@@ -77,10 +87,12 @@ def nonlocal_denoise(image, h=2,m=7,search_space=21,file_name="nonlocal.png"):
             if bounds[3] > image.shape[1]:
                 bounds[3] = image.shape[0]
             for windex in range(bounds[2],bounds[3]):
-                swindow += indexlist[(windex*image.shape[1]+bounds[0]):(windex*image.shape[1]+bounds[0])]
+                swindow += indexlist[(windex*image.shape[1]+bounds[0]):(windex*image.shape[1]+bounds[1])]
             
+            
+                
             # create vector of euclidean distances for all j
-            euclideans = [euclidean(N[i0],N[j0]) for j0 in swindow]
+            euclideans = [euclidean(N[i0],N[j0])+deviation**2 for j0 in swindow]
 
             # calculate all Z(i)'s            
             Zi = Z(euclideans)
@@ -89,13 +101,17 @@ def nonlocal_denoise(image, h=2,m=7,search_space=21,file_name="nonlocal.png"):
             wi = [ wij(Zi, eucj) for eucj in euclideans ]
 
             
-            newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in swindow ])
+            newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in range(len(swindow)) ])
             
             #increment 
             i0 += 1
+    print("It took {} minutes.".format(round((time.time()-startTime)/60,2)))
 
-    print("It took {} minutes.".format((time.time()-startTime)/60))
-            
+    with open("out.txt",'w') as f:
+        for line in newImg:
+            f.write(str(line))
+
+    
     fig = plt.figure()
     plt.title('Nonlocal means for denoising')
     plt.xticks([])
