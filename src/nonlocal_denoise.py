@@ -2,8 +2,7 @@ import numpy as np
 import cv2 as cv
 import matplotlib.pyplot as plt
 import math
-import time
-import sys
+import time, sys, os
 
 def nonlocal_denoise(image, h=10,m=7,deviation=29,search_space=21,file_name="nonlocal.png"):
     startTime = time.time()
@@ -51,7 +50,7 @@ def nonlocal_denoise(image, h=10,m=7,deviation=29,search_space=21,file_name="non
     newImg = np.copy(image)
     
     # Vector of neighborhoods
-    N = [np.array(pImg[i-mp:i+mp,j-mp:j+mp])
+    N = [np.array(pImg[i-mp:i+mp,j-mp:j+mp]).flatten()
          for i in range(mp,pImg.shape[0]-mp)
          for j in range(mp,pImg.shape[1]-mp)]
 
@@ -66,10 +65,11 @@ def nonlocal_denoise(image, h=10,m=7,deviation=29,search_space=21,file_name="non
 
             ctime = round(time.time()-startTime,2)
             if ctime/60 > 1:
-                
-            sys.stdout.write("{}/{}, {}% {}s\n".format(i0,l,round(100*i0/l),ctime))
+                ctime = "{}:{}".format(round(ctime/60),round(ctime%60))
+
+
+            sys.stdout.write("{}/{}, {}% {}\r".format(i0,l,math.floor(100*i0/l),ctime))
             sys.stdout.flush()
-            print()
             
 
 
@@ -87,29 +87,69 @@ def nonlocal_denoise(image, h=10,m=7,deviation=29,search_space=21,file_name="non
             if bounds[3] > image.shape[1]:
                 bounds[3] = image.shape[0]
             for windex in range(bounds[2],bounds[3]):
-                swindow += indexlist[(windex*image.shape[1]+bounds[0]):(windex*image.shape[1]+bounds[1])]
+                swindow += indexlist[(windex*image.shape[0]+bounds[0]):(windex*image.shape[0]+bounds[1])]
             
             
                 
             # create vector of euclidean distances for all j
-            euclideans = [euclidean(N[i0],N[j0])+deviation**2 for j0 in swindow]
+            euclideans = [euclidean(N[i0],N[j0])+(2*deviation**2) for j0 in swindow]
 
+            
             # calculate all Z(i)'s            
             Zi = Z(euclideans)
-
+            
+            if Zi < 0:
+                print(i0)
+                print("swindow",swindow)
+                if len(swindow) == 0:
+                    print()
+                    print(bounds)
+                    print(indexlist[(windex*image.shape[0]+bounds[0]):(windex*image.shape[0]+bounds[1])])
+                    print()
+                print(N[swindow[i0]],N[swindow[0]])
+                print(euclideans)
+                
             # w(i,j)
             wi = [ wij(Zi, eucj) for eucj in euclideans ]
-
+            
             
             newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in range(len(swindow)) ])
             
             #increment 
             i0 += 1
-    print("It took {} minutes.".format(round((time.time()-startTime)/60,2)))
+    print("It took {} minutes.".format(round(((time.time()-startTime)/60),2)))
 
     with open("out.txt",'w') as f:
         for line in newImg:
             f.write(str(line))
+
+    fig = plt.figure()
+    plt.title('Original')
+    plt.xticks([])
+    plt.yticks([])
+
+    plt.imshow(image,cmap='gray', vmin = 0, vmax = 255)
+    plt.show()
+    fig.savefig("Original{}".format(image.shape)+file_name)
+
+            
+    fig = plt.figure()
+    plt.title('Nonlocal means for denoising')
+    plt.xticks([])
+    plt.yticks([])
+
+    plt.imshow(newImg,cmap='gray', vmin = 0, vmax = 255)
+    plt.show()
+    fig.savefig("{}".format(image.shape)+file_name)
+
+    fig = plt.figure()
+    plt.title('Nonlocal means for denoising')
+    plt.xticks([])
+    plt.yticks([])
+
+    plt.imshow(image-newImg,cmap='gray', vmin = 0, vmax = 255)
+    plt.show()
+    fig.savefig("2"+"{}".format(image.shape)+file_name)
 
     
     fig = plt.figure()
@@ -117,16 +157,35 @@ def nonlocal_denoise(image, h=10,m=7,deviation=29,search_space=21,file_name="non
     plt.xticks([])
     plt.yticks([])
 
-    plt.imshow(newImg)
+    plt.imshow(image+newImg,cmap='gray', vmin = 0, vmax = 255)
     plt.show()
-    fig.savefig(file_name)
+    fig.savefig("3"+"{}".format(image.shape)+file_name)
+
+    fig = plt.figure()
+    plt.title('Nonlocal means for denoising')
+    plt.xticks([])
+    plt.yticks([])
+
+    plt.imshow(newImg-image,cmap='gray', vmin = 0, vmax = 255)
+    plt.show()
+    fig.savefig("4"+"{}".format(image.shape)+file_name)
 
     
 
 if __name__ == '__main__':
 
     tools = cv.imread('tools_noisy.png', 0)
-      
-    nonlocal_denoise(tools,file_name='tools_nonlocal_denoise.png')
-
+    eats = cv.imread('eats.jpg', 0)
+    eats = cv.resize(eats,(260,280))
+    
+    fish = cv.imread('playfish.png', 0)
+    fish = cv.resize(fish,(180,260))
+    
+    #nonlocal_denoise(tools,m=5,search_space=14,file_name='tools_nonlocal_denoise.png')
+    
+    # with smaller frame
+    #nonlocal_denoise(tools,m=7,search_space=14,deviation=29,file_name='tools_nl_lowdev.png')
+    #nonlocal_denoise(tools,m=5,search_space=14,h=5,file_name='tools_nl_lowh.png')
+    nonlocal_denoise(eats,m=5,search_space=14,h=5,file_name='eats_nl_lowh.png')
+    nonlocal_denoise(fish,m=5,search_space=14,h=5,file_name='fish_nl_lowh.png')
     
