@@ -131,4 +131,7 @@ $w(i,j) = \frac{1}{Z(i)}e^{-\frac{\| v(N_i) - v(J_j) \|_2^2,_a}{h^2}$
 - neighborhood of 7x7
 - h has been fixed to 10*\sigma
 
+- Algorithm's left method noise does not present any noticible geometrical structure
+
+- The most favorable case for NL-means is the textured or periodic case of noise.
 

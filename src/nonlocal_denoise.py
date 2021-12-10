@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import math
 import time
 
-def nonlocal_denoise(image, h=2,m=3,file_name="nonlocal.png"):
+def nonlocal_denoise(image, h=2,m=7,search_space=21,file_name="nonlocal.png"):
     startTime = time.time()
     
     # h is a weightparamter
@@ -56,13 +56,31 @@ def nonlocal_denoise(image, h=2,m=3,file_name="nonlocal.png"):
 
     fImg = image.flatten()
     l = len(fImg)
+    indexlist = np.array([ i for i in range(l) ])
     #simple iteration calculatr for reducing operations done in the loop
     i0 = 0
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
             print("{}/{}".format(i0,l))
+
+            # finds all pixel indexes of the search window
+            swindow = []
+            win = round(search_space/2)
+            # bounds [lb, rb, ub, db]
+            bounds = [i-win, i+win, j-win, j+win]
+            if bounds[0] < 0:
+                bounds[0] = 0
+            if bounds[1] > image.shape[0]:
+                bounds[1] = image.shape[0]
+            if bounds[2] < 0:
+                bounds[2] = 0
+            if bounds[3] > image.shape[1]:
+                bounds[3] = image.shape[0]
+            for windex in range(bounds[2],bounds[3]):
+                swindow += indexlist[(windex*image.shape[1]+bounds[0]):(windex*image.shape[1]+bounds[0])]
+            
             # create vector of euclidean distances for all j
-            euclideans = [euclidean(N[i0],N[j0]) for j0 in range(len(N))]
+            euclideans = [euclidean(N[i0],N[j0]) for j0 in swindow]
 
             # calculate all Z(i)'s            
             Zi = Z(euclideans)
@@ -71,12 +89,12 @@ def nonlocal_denoise(image, h=2,m=3,file_name="nonlocal.png"):
             wi = [ wij(Zi, eucj) for eucj in euclideans ]
 
             
-            newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in range(len(fImg)) ])
+            newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in swindow ])
             
             #increment 
             i0 += 1
 
-    print("It took {} minutes.".format((time.time()-startTime)/60)
+    print("It took {} minutes.".format((time.time()-startTime)/60))
             
     fig = plt.figure()
     plt.title('Nonlocal means for denoising')
