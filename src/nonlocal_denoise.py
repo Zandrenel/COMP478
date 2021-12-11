@@ -6,9 +6,10 @@ import time, sys, os
 
 def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,filename="nonlocal.png"):
     startTime = time.time()
-    
     # h is a weightparamter
     # m is the kernel size
+    
+    # radius of window to help make the code readable
     mp = round((m-1)/2)
     
     # Steps
@@ -27,14 +28,15 @@ def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,filename="non
 
                
     # as defined by the report is detailed as
-    # ||v(Ni-Nj)||_2^2 or expanded as \sum
-    euclidean = lambda Ni, Nj :sum([Nij**2 for Nij in (Ni-Nj)])
+    # ||v(Ni-Nj)||_2^2
+    euclidean = lambda Ni, Nj :(sum([Nij**2 for Nij in (Ni-Nj)])**(1/2))
     
 
-    
+    # Lambda function to calculate the Normalizing constant given an array of
+    # a euclidean distance for every j to include
     Z = lambda euclideans : sum([ math.e**(-1*(euc)/(h**2)) for euc in euclideans ])
 
-    
+    # Calculates the w(i,j) for a given j calculated with respect to i already
     wij = lambda Zi, eucij : ((1/Zi)*math.e**(-1*((eucij)/h**2)))
     
     # make the paddedd image
@@ -100,34 +102,21 @@ def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,filename="non
             
             # calculate all Z(i)'s            
             Zi = Z(euclideans)
-
-            if Zi < 0:
-                print(i0)
-                print("swindow",swindow)
-                if len(swindow) == 0:
-                    print()
-                    print(bounds)
-                    print(indexlist[(windex*image.shape[0]+bounds[0]):(windex*image.shape[0]+bounds[1])])
-                    print()
-                print(N[swindow[i0]],N[swindow[0]])
-                print(euclideans)
                 
             # w(i,j)
             wi = [ wij(Zi, eucj) for eucj in euclideans ]
 
-            #newImg[i,j] = np.sum([ max(wi)*fImg[j0]/len(swindow) for j0 in range(len(swindow)) ])
-            newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in range(len(swindow)) ])
+            # Calculate the new value
+            vj = [fImg[j1] for j1 in swindow]
+            newImg[i,j] = np.sum([ wi[j0]*vj[j0] for j0 in range(len(swindow)) ])
             
             #increment 
             i0 += 1
     print("It took {} minutes.".format(round(((time.time()-startTime)/60),2)))
 
-    with open("out.txt",'w') as f:
-        for line in newImg:
-            f.write(str(line))
-
+    
     plotImg(image, 'Original', "original_"+filename)
-    plotImg(newImg,"modified", "filtered_"+filename)
+    plotImg(newImg,"Denoised", "filtered_"+filename)
     
 def plotImg(image, title, filename):
     fig = plt.figure()
@@ -165,13 +154,17 @@ if __name__ == '__main__':
     gauss = gauss.reshape(stare.shape[0],stare.shape[1]).astype('uint8')
     noisey_stare = stare + stare * gauss
 
-    
+    brain = cv.imread('../input_images/brain_prac.jpg', 0)
+    brain = cv.resize(brain,(450,220))
+
+
     
     #nonlocal_denoise(tools,m=7,search_space=14,h=1,deviation=.6,filename='tools_nonlocal_denoise.png')
     
     # with smaller frame
-    nonlocal_denoise(tools,m=3,search_space=90,deviation=.7,h=7,filename='tools_nl.png')
-    #nonlocal_denoise(tools,m=5,search_space=14,h=5,file_name='tools_nl_lowh.png')
-    #nonlocal_denoise(noisey_eats,m=5,search_space=14,h=14,deviation=.6,filename='eats_nl_lowh.png')
-    #nonlocal_denoise(noisey_fish,m=5,search_space=14,h=14,deviation=.6,filename='fish_nl_lowh.png')
-    nonlocal_denoise(noisey_stare,m=3,search_space=90,h=7,deviation=.6,filename='stare_nl.png')
+    #nonlocal_denoise(tools,m=3,search_space=90,deviation=.7,h=7,filename='tools_nl.png')
+    nonlocal_denoise(tools,m=5,search_space=14,h=5,file_name='tools_nl_lowh.png')
+    nonlocal_denoise(noisey_eats,m=7,search_space=28,h=14,deviation=.6,filename='eats_nl_lowh.png')
+    nonlocal_denoise(noisey_fish,m=7,search_space=28,h=14,deviation=.6,filename='fish_nl_lowh.png')
+    nonlocal_denoise(noisey_stare,m=7,search_space=28,h=7,deviation=.6,filename='stare_nl.png')
+    nonlocal_denoise(brain,m=5,h=7,deviation=.7,search_space=28,filename='brain_nl.png')
