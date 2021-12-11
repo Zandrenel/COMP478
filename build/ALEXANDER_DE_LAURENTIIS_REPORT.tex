@@ -2,13 +2,10 @@
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{times}
-\usepackage[
-backend=bibtex,
-style=alphabetic,
-sorting=ynt
-]{biblatex}
-%\addbibresource{references.bib}
-\bibliography{references.bib}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{graphicx}
 
 \geometry{
   a4paper,
@@ -42,8 +39,34 @@ Then the normalizing constant for the weight must be generated, $Z(i)$, which is
 Compared to other denoising algorithms the method noise extracted from the image shows very little structure. The algorithm may not perform noticibly better depending, but it is suited well for periodic or textured noise such as is present in CT scans. Its easier to find comparable locations for it when there are more open spaces. Therefore the algorthm as many has its uses and situations where it may outperform better than a local algorithm. It most importantly can denoise without reduction of details in the original image.
 
 
-
+\centering
 \section*{References}
 \textbf{Non-local means image denoising}\\
 A. Buades, B. Coll and J. -. Morel, "A non-local algorithm for image denoising," 2005 IEEE \textit{Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'05)}, San Diego, CA, USA, 2005, pp. 60-65 vol. 2, doi: 10.1109/CVPR.2005.38.
+
+\pagebreak
+\centering
+\section{Results}
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{.3\textwidth}
+  \includegraphics[width=\textwidth]{../imgs/stare}
+  \caption{Original Image}
+  \label{fig:5}
+\end{subfigure}\\
+  \begin{subfigure}[b]{.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../imgs/original_stare_nl.png}
+  \caption{greyscale plus noise}
+  \label{fig:4}
+\end{subfigure}
+\begin{subfigure}[b]{.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../imgs/filtered_stare_nl}
+  \caption{Early Filtered result}
+  \label{fig:4}
+\end{subfigure}
+\caption{Earlier iteration of the algorithm where it smoothed more than reduce the noise.}
+\end{figure}
+
 \end{document}

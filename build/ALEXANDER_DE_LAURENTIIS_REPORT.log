@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.6.2)  11 DEC 2021 06:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.6.2)  11 DEC 2021 08:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -185,275 +185,96 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (/usr/share/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
 )
-(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
-Package: biblatex 2020/12/31 v3.16 programmable bibliographies (PK/MW)
+(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
 
-(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count266
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen151
+\captionmargin@=\dimen152
+\captionwidth=\dimen153
+\caption@tempdima=\dimen154
+\caption@indent=\dimen155
+\caption@parindent=\dimen156
+\caption@hangindent=\dimen157
+Package caption Info: Standard document class detected.
 )
-(/usr/share/texmf-dist/tex/latex/logreq/logreq.sty
-Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count267
+\c@caption@flags=\count266
+\c@continuedfloat=\count267
+Package caption Info: hyperref package is loaded.
+)
+(/usr/share/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+\c@subfigure=\count268
+\c@subtable=\count269
+)
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count270
+\float@exts=\toks17
+\float@box=\box47
+\@float@everytoks=\toks18
+\@floatcapt=\box48
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-dist/tex/latex/logreq/logreq.def
-File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+\Gin@req@height=\dimen158
+\Gin@req@width=\dimen159
 )
-\c@tabx@nest=\count268
-\c@listtotal=\count269
-\c@listcount=\count270
-\c@liststart=\count271
-\c@liststop=\count272
-\c@citecount=\count273
-\c@citetotal=\count274
-\c@multicitecount=\count275
-\c@multicitetotal=\count276
-\c@instcount=\count277
-\c@maxnames=\count278
-\c@minnames=\count279
-\c@maxitems=\count280
-\c@minitems=\count281
-\c@citecounter=\count282
-\c@maxcitecounter=\count283
-\c@savedcitecounter=\count284
-\c@uniquelist=\count285
-\c@uniquename=\count286
-\c@refsection=\count287
-\c@refsegment=\count288
-\c@maxextratitle=\count289
-\c@maxextratitleyear=\count290
-\c@maxextraname=\count291
-\c@maxextradate=\count292
-\c@maxextraalpha=\count293
-\c@abbrvpenalty=\count294
-\c@highnamepenalty=\count295
-\c@lownamepenalty=\count296
-\c@maxparens=\count297
-\c@parenlevel=\count298
-\blx@tempcnta=\count299
-\blx@tempcntb=\count300
-\blx@tempcntc=\count301
-\blx@maxsection=\count302
-\blx@maxsegment@0=\count303
-\blx@notetype=\count304
-\blx@parenlevel@text=\count305
-\blx@parenlevel@foot=\count306
-\blx@sectionciteorder@0=\count307
-\blx@entrysetcounter=\count308
-\blx@biblioinstance=\count309
-\labelnumberwidth=\skip50
-\labelalphawidth=\skip51
-\biblabelsep=\skip52
-\bibitemsep=\skip53
-\bibnamesep=\skip54
-\bibinitsep=\skip55
-\bibparsep=\skip56
-\bibhang=\skip57
-\blx@bcfin=\read2
-\blx@bcfout=\write3
-\blx@langwohyphens=\language87
-\c@mincomprange=\count310
-\c@maxcomprange=\count311
-\c@mincompwidth=\count312
-Package biblatex Info: Trying to load biblatex default data model...
-Package biblatex Info: ... file 'blx-dm.def' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/blx-dm.def
-File: blx-dm.def 2020/12/31 v3.16 biblatex localization (PK/MW)
-)
-Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'alphabetic.dbx' not found.
-Package biblatex Info: Trying to load biblatex custom data model...
-Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count313
-\c@savedafterword=\count314
-\c@annotator=\count315
-\c@savedannotator=\count316
-\c@author=\count317
-\c@savedauthor=\count318
-\c@bookauthor=\count319
-\c@savedbookauthor=\count320
-\c@commentator=\count321
-\c@savedcommentator=\count322
-\c@editor=\count323
-\c@savededitor=\count324
-\c@editora=\count325
-\c@savededitora=\count326
-\c@editorb=\count327
-\c@savededitorb=\count328
-\c@editorc=\count329
-\c@savededitorc=\count330
-\c@foreword=\count331
-\c@savedforeword=\count332
-\c@holder=\count333
-\c@savedholder=\count334
-\c@introduction=\count335
-\c@savedintroduction=\count336
-\c@namea=\count337
-\c@savednamea=\count338
-\c@nameb=\count339
-\c@savednameb=\count340
-\c@namec=\count341
-\c@savednamec=\count342
-\c@translator=\count343
-\c@savedtranslator=\count344
-\c@shortauthor=\count345
-\c@savedshortauthor=\count346
-\c@shorteditor=\count347
-\c@savedshorteditor=\count348
-\c@labelname=\count349
-\c@savedlabelname=\count350
-\c@institution=\count351
-\c@savedinstitution=\count352
-\c@lista=\count353
-\c@savedlista=\count354
-\c@listb=\count355
-\c@savedlistb=\count356
-\c@listc=\count357
-\c@savedlistc=\count358
-\c@listd=\count359
-\c@savedlistd=\count360
-\c@liste=\count361
-\c@savedliste=\count362
-\c@listf=\count363
-\c@savedlistf=\count364
-\c@location=\count365
-\c@savedlocation=\count366
-\c@organization=\count367
-\c@savedorganization=\count368
-\c@origlocation=\count369
-\c@savedoriglocation=\count370
-\c@origpublisher=\count371
-\c@savedorigpublisher=\count372
-\c@publisher=\count373
-\c@savedpublisher=\count374
-\c@language=\count375
-\c@savedlanguage=\count376
-\c@origlanguage=\count377
-\c@savedoriglanguage=\count378
-\c@pageref=\count379
-\c@savedpageref=\count380
-\shorthandwidth=\skip58
-\shortjournalwidth=\skip59
-\shortserieswidth=\skip60
-\shorttitlewidth=\skip61
-\shortauthorwidth=\skip62
-\shorteditorwidth=\skip63
-\locallabelnumberwidth=\skip64
-\locallabelalphawidth=\skip65
-\localshorthandwidth=\skip66
-\localshortjournalwidth=\skip67
-\localshortserieswidth=\skip68
-\localshorttitlewidth=\skip69
-\localshortauthorwidth=\skip70
-\localshorteditorwidth=\skip71
-Package biblatex Info: Trying to load compatibility code...
-Package biblatex Info: ... file 'blx-compat.def' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/blx-compat.def
-File: blx-compat.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
-)
-Package biblatex Info: Trying to load BibTeX backend compatibility...
-Package biblatex Info: ... file 'blx-bibtex.def' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/blx-bibtex.def
-File: blx-bibtex.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
-
-
-Package biblatex Warning: Using fall-back BibTeX(8) backend:
-(biblatex)                functionality may be reduced/unavailable.
-
-)
-Package biblatex Info: Trying to load generic definitions...
-Package biblatex Info: ... file 'biblatex.def' found.
- (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.def
-File: biblatex.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
-\c@textcitecount=\count381
-\c@textcitetotal=\count382
-\c@textcitemaxnames=\count383
-\c@biburlbigbreakpenalty=\count384
-\c@biburlbreakpenalty=\count385
-\c@biburlnumpenalty=\count386
-\c@biburlucpenalty=\count387
-\c@biburllcpenalty=\count388
-\biburlbigskip=\muskip17
-\biburlnumskip=\muskip18
-\biburlucskip=\muskip19
-\biburllcskip=\muskip20
-\c@smartand=\count389
-)
-Package biblatex Info: Trying to load bibliography style 'alphabetic'...
-Package biblatex Info: ... file 'alphabetic.bbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
-File: alphabetic.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
-Package biblatex Info: Trying to load bibliography style 'standard'...
-Package biblatex Info: ... file 'standard.bbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
-File: standard.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count390
-\c@bbx:relatedtotal=\count391
-))
-Package biblatex Info: Trying to load citation style 'alphabetic'...
-Package biblatex Info: ... file 'alphabetic.cbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx
-File: alphabetic.cbx 2020/12/31 v3.16 biblatex citation style (PK/MW)
-Package biblatex Info: Redefining '\cite'.
-Package biblatex Info: Redefining '\parencite'.
-Package biblatex Info: Redefining '\footcite'.
-Package biblatex Info: Redefining '\footcitetext'.
-Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\textcite'.
-Package biblatex Info: Redefining '\textcites'.
-Package biblatex Info: Redefining '\cites'.
-Package biblatex Info: Redefining '\parencites'.
-Package biblatex Info: Redefining '\smartcites'.
-)
-Package biblatex Info: Trying to load configuration file...
-Package biblatex Info: ... file 'biblatex.cfg' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.cfg
-File: biblatex.cfg 
-))
-\@quotelevel=\count392
-\@quotereset=\count393
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
-2.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
+9.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count394
-\l__pdf_internal_box=\box47
+\l__color_backend_stack_int=\count271
+\l__pdf_internal_box=\box49
 )
-(./ALEXANDER_DE_LAURENTIIS_REPORT.aux)
+(./ALEXANDER_DE_LAURENTIIS_REPORT.aux
+
+LaTeX Warning: Label `fig:4' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:4' multiply defined.
+
+)
 \openout1 = `ALEXANDER_DE_LAURENTIIS_REPORT.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -489,7 +310,7 @@ LaTeX Font Info:    ... okay on input line 22.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 22.
+Package hyperref Info: Link coloring OFF on input line 19.
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -499,84 +320,89 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count395
+\c@section@level=\count272
 )
-LaTeX Info: Redefining \ref on input line 22.
-LaTeX Info: Redefining \pageref on input line 22.
-LaTeX Info: Redefining \nameref on input line 22.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./ALEXANDER_DE_LAURENTIIS_REPORT.out) (./ALEXANDER_DE_LAURENTIIS_REPORT.out)
-\@outlinefile=\write4
-\openout4 = `ALEXANDER_DE_LAURENTIIS_REPORT.out'.
+\@outlinefile=\write3
+\openout3 = `ALEXANDER_DE_LAURENTIIS_REPORT.out'.
 
-Package biblatex Info: Trying to load language 'english'...
-Package biblatex Info: ... file 'english.lbx' found.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
 
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-File: english.lbx 2020/12/31 v3.16 biblatex localization (PK/MW)
-)
-Package biblatex Info: Input encoding 'utf8' detected.
-Package biblatex Info: Automatic encoding selection.
-(biblatex)             Assuming data encoding 'utf8'.
-Package biblatex Info: Input encoding 'utf8' specified.
-Package biblatex Info: Data encoding 'utf8' specified.
-(biblatex)             No need to reencode data.
-Package biblatex Info: Document encoding is UTF8 ....
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count273
+\scratchdimen=\dimen160
+\scratchbox=\box50
+\nofMPsegments=\count274
+\nofMParguments=\count275
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count276
+\MPscratchDim=\dimen161
+\MPnumerator=\count277
+\makeMPintoPDFobject=\count278
+\everyMPtoPDFconversion=\toks20
+) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
 
-(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-02-18 L3 programming layer (loader) 
-)
-Package biblatex Info: ... and expl3
-(biblatex)             2021-02-18 L3 programming layer (loader) 
-(biblatex)             is new enough (at least 2020/04/06),
-(biblatex)             setting 'casechanger=expl3'.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
-(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-01.sty
-(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex)))
-Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
-)
-\openout3 = `ALEXANDER_DE_LAURENTIIS_REPORT-blx.bib'.
-
-Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'ALEXANDER_DE_LAURENTIIS_REPORT.bbl' not found.
-
-
-No file ALEXANDER_DE_LAURENTIIS_REPORT.bbl.
-Package biblatex Info: Reference section=0 on input line 22.
-Package biblatex Info: Reference segment=0 on input line 22.
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 25.
+(Font)              <14.4> on input line 22.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 25.
-[1
+(Font)              <7> on input line 22.
+ [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 32.
+(Font)              <12> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 32.
+(Font)              <8> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 32.
+(Font)              <6> on input line 29.
  [2]
+<../imgs/stare.png, id=50, 353.32pt x 481.8pt>
+File: ../imgs/stare.png Graphic file (type png)
+<use ../imgs/stare.png>
+Package pdftex.def Info: ../imgs/stare.png  used on input line 53.
+(pdftex.def)             Requested size: 135.89185pt x 185.30609pt.
+<../imgs/original_stare_nl.png, id=51, 541.3023pt x 508.7808pt>
+File: ../imgs/original_stare_nl.png Graphic file (type png)
+<use ../imgs/original_stare_nl.png>
+Package pdftex.def Info: ../imgs/original_stare_nl.png  used on input line 59.
+(pdftex.def)             Requested size: 181.18454pt x 170.29706pt.
+<../imgs/filtered_stare_nl.png, id=53, 541.3023pt x 508.7808pt>
+File: ../imgs/filtered_stare_nl.png Graphic file (type png)
+<use ../imgs/filtered_stare_nl.png>
+Package pdftex.def Info: ../imgs/filtered_stare_nl.png  used on input line 65.
+(pdftex.def)             Requested size: 181.18454pt x 170.29706pt.
+ [3 <../imgs/stare.png (PNG copy)> <../imgs/original_stare_nl.png> <../imgs/fil
+tered_stare_nl.png>]
 (./ALEXANDER_DE_LAURENTIIS_REPORT.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `ALEXANDER_DE_LAURENTIIS_REPORT.out' has not 
 changed.
-(rerunfilecheck)             Checksum: 1D60FC1ECC5353DC7220C1D419A97B1D;560.
-Package logreq Info: Writing requests to 'ALEXANDER_DE_LAURENTIIS_REPORT.run.xm
-l'.
-\openout1 = `ALEXANDER_DE_LAURENTIIS_REPORT.run.xml'.
-
+(rerunfilecheck)             Checksum: A4F738FFFB023243057A931732C1CA95;638.
  ) 
 Here is how much of TeX's memory you used:
- 14649 strings out of 478994
- 251697 string characters out of 5864752
- 766589 words of memory out of 5000000
- 31996 multiletter control sequences out of 15000+600000
- 418903 words of font info for 54 fonts, out of 8000000 for 9000
+ 9618 strings out of 478994
+ 147790 string characters out of 5864752
+ 448683 words of memory out of 5000000
+ 26981 multiletter control sequences out of 15000+600000
+ 420488 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,6n,74p,1913b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,7n,74p,607b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -588,10 +414,10 @@ m/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
 sr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on ALEXANDER_DE_LAURENTIIS_REPORT.pdf (2 pages, 110781 bytes).
+Output written on ALEXANDER_DE_LAURENTIIS_REPORT.pdf (3 pages, 699186 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 105 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 64 words of extra memory for PDF output out of 10000 (max. 10000000)
 

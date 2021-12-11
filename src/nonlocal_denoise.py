@@ -163,8 +163,8 @@ if __name__ == '__main__':
     
     # with smaller frame
     #nonlocal_denoise(tools,m=3,search_space=90,deviation=.7,h=7,filename='tools_nl.png')
-    nonlocal_denoise(tools,m=5,search_space=14,h=5,file_name='tools_nl_lowh.png')
-    nonlocal_denoise(noisey_eats,m=7,search_space=28,h=14,deviation=.6,filename='eats_nl_lowh.png')
-    nonlocal_denoise(noisey_fish,m=7,search_space=28,h=14,deviation=.6,filename='fish_nl_lowh.png')
-    nonlocal_denoise(noisey_stare,m=7,search_space=28,h=7,deviation=.6,filename='stare_nl.png')
-    nonlocal_denoise(brain,m=5,h=7,deviation=.7,search_space=28,filename='brain_nl.png')
+    nonlocal_denoise(tools,m=5,search_space=14,h=5,filename='tools_nl_lowh.png')
+    #nonlocal_denoise(noisey_eats,m=7,search_space=28,h=14,deviation=.6,filename='eats_nl_lowh.png')
+    #nonlocal_denoise(noisey_fish,m=7,search_space=28,h=14,deviation=.6,filename='fish_nl_lowh.png')
+    #nonlocal_denoise(noisey_stare,m=7,search_space=28,h=7,deviation=.6,filename='stare_nl.png')
+    #nonlocal_denoise(brain,m=5,h=7,deviation=.7,search_space=28,filename='brain_nl.png')
