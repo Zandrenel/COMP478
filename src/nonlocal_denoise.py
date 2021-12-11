@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import math
 import time, sys, os
 
-def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,file_name="nonlocal.png"):
+def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,filename="nonlocal.png"):
     startTime = time.time()
     
     # h is a weightparamter
@@ -33,7 +33,6 @@ def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,file_name="no
 
     
     Z = lambda euclideans : sum([ math.e**(-1*(euc)/(h**2)) for euc in euclideans ])
-    
 
     
     wij = lambda Zi, eucij : ((1/Zi)*math.e**(-1*((eucij)/h**2)))
@@ -101,7 +100,7 @@ def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,file_name="no
             
             # calculate all Z(i)'s            
             Zi = Z(euclideans)
-            
+
             if Zi < 0:
                 print(i0)
                 print("swindow",swindow)
@@ -115,10 +114,9 @@ def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,file_name="no
                 
             # w(i,j)
             wi = [ wij(Zi, eucj) for eucj in euclideans ]
-            
-            
-            newImg[i,j] = np.sum([ max(wi)*fImg[j0] for j0 in range(len(swindow)) ])
-            #newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in range(len(swindow)) ])
+
+            #newImg[i,j] = np.sum([ max(wi)*fImg[j0]/len(swindow) for j0 in range(len(swindow)) ])
+            newImg[i,j] = np.sum([ wi[j0]*fImg[j0] for j0 in range(len(swindow)) ])
             
             #increment 
             i0 += 1
@@ -128,95 +126,52 @@ def nonlocal_denoise(image, h=10,m=7,deviation=.04,search_space=21,file_name="no
         for line in newImg:
             f.write(str(line))
 
+    plotImg(image, 'Original', "original_"+filename)
+    plotImg(newImg,"modified", "filtered_"+filename)
+    
+def plotImg(image, title, filename):
     fig = plt.figure()
-    plt.title('Original')
+    plt.title(title)
     plt.xticks([])
     plt.yticks([])
 
     plt.imshow(image,cmap='gray', vmin = 0, vmax = 255)
     plt.show()
-    fig.savefig("Original{}".format(image.shape)+file_name)
+    fig.savefig("../out_images/"+filename)
 
-            
-    fig = plt.figure()
-    plt.title('Nonlocal means for denoising')
-    plt.xticks([])
-    plt.yticks([])
 
-    plt.imshow(newImg,cmap='gray', vmin = 0, vmax = 255)
-    plt.show()
-    fig.savefig("{}".format(image.shape)+file_name)
-
-    fig = plt.figure()
-    plt.title('Nonlocal means for denoising')
-    plt.xticks([])
-    plt.yticks([])
-
-    plt.imshow(image-newImg,cmap='gray', vmin = 0, vmax = 255)
-    plt.show()
-    fig.savefig("2"+"{}".format(image.shape)+file_name)
-
-    
-    fig = plt.figure()
-    plt.title('Nonlocal means for denoising')
-    plt.xticks([])
-    plt.yticks([])
-
-    plt.imshow(image+newImg,cmap='gray', vmin = 0, vmax = 255)
-    plt.show()
-    fig.savefig("2_inv"+"{}".format(image.shape)+file_name)
-
-    
-    fig = plt.figure()
-    plt.title('Nonlocal means for denoising')
-    plt.xticks([])
-    plt.yticks([])
-
-    plt.imshow(image+newImg,cmap='gray', vmin = 0, vmax = 255)
-    plt.show()
-    fig.savefig("3"+"{}".format(image.shape)+file_name)
-
-    fig = plt.figure()
-    plt.title('Nonlocal means for denoising')
-    plt.xticks([])
-    plt.yticks([])
-
-    plt.imshow(newImg-image,cmap='gray', vmin = 0, vmax = 255)
-    plt.show()
-    fig.savefig("4"+"{}".format(image.shape)+file_name)
 
     
 
 if __name__ == '__main__':
 
-    tools = cv.imread('tools_noisy.png', 0)
+    tools = cv.imread('../input_images/tools_noisy.png', 0)
     
-    eats = cv.imread('eats.jpg', 0)
+    eats = cv.imread('../input_images/eats.jpg', 0)
     eats = cv.resize(eats,(260,280))
     gauss = np.random.normal(0,1,eats.size)
     gauss = gauss.reshape(eats.shape[0],eats.shape[1]).astype('uint8')
     noisey_eats = eats + eats * gauss
     
-    fish = cv.imread('playfish.png', 0)
+    fish = cv.imread('../input_images/playfish.png', 0)
     fish = cv.resize(fish,(180,260))
     gauss = np.random.normal(0,1,fish.size)
     gauss = gauss.reshape(fish.shape[0],fish.shape[1]).astype('uint8')
     noisey_fish = fish + fish * gauss
 
-    stare = cv.imread('stare.png', 0)
-    #stare = cv.resize(stare,(176,240))
+    stare = cv.imread('../input_images/stare.png', 0)
+    stare = cv.resize(stare,(176,240))
     gauss = np.random.normal(0,1,stare.size)
     gauss = gauss.reshape(stare.shape[0],stare.shape[1]).astype('uint8')
     noisey_stare = stare + stare * gauss
 
     
     
-    #nonlocal_denoise(tools,m=7,search_space=14,h=1,deviation=.6,file_name='tools_nonlocal_denoise.png')
+    #nonlocal_denoise(tools,m=7,search_space=14,h=1,deviation=.6,filename='tools_nonlocal_denoise.png')
     
     # with smaller frame
-    #nonlocal_denoise(tools,m=7,search_space=14,deviation=29,file_name='tools_nl_lowdev.png')
+    nonlocal_denoise(tools,m=3,search_space=90,deviation=.7,h=7,filename='tools_nl.png')
     #nonlocal_denoise(tools,m=5,search_space=14,h=5,file_name='tools_nl_lowh.png')
-    #nonlocal_denoise(noisey_eats,m=5,search_space=14,h=14,deviation=.6,file_name='eats_nl_lowh.png')
-    #nonlocal_denoise(noisey_fish,m=5,search_space=14,h=14,deviation=.6,file_name='fish_nl_lowh.png')
-    nonlocal_denoise(noisey_stare,m=5,search_space=29,h=14,deviation=.6,file_name='stare_nl.png')
-
+    #nonlocal_denoise(noisey_eats,m=5,search_space=14,h=14,deviation=.6,filename='eats_nl_lowh.png')
+    #nonlocal_denoise(noisey_fish,m=5,search_space=14,h=14,deviation=.6,filename='fish_nl_lowh.png')
+    nonlocal_denoise(noisey_stare,m=3,search_space=90,h=7,deviation=.6,filename='stare_nl.png')
